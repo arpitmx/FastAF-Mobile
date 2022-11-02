@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.ncs.fastafmobile'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.ncs.fastafmobile"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -37,6 +37,11 @@ android {
 }
 
 dependencies {
+
+    //QR Library
+    implementation("io.github.g00fy2.quickie:quickie-bundled:1.5.2")
+
+
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'

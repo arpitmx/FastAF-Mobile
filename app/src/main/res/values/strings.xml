@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FastAF Mobile</string>
+    <string name="qr_label">Scan Token QR</string>
 </resources>
