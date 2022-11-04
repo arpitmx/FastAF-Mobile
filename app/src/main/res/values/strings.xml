@@ -2,4 +2,6 @@
     <string name="app_name">FastAF Mobile</string>
     <string name="qr_label">Scan Token QR</string>
     <string name="fcm_token">NULL</string>
+    <string name="fastauth_mobile">FastAuth Mobile</string>
+    <string name="confirm_digits">Confirm digits</string>
 </resources>

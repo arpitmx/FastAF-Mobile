@@ -19,7 +19,7 @@
         <activity
             android:name=".MainAuthActivity"
             android:exported="false"
-            android:theme="@style/Theme.MyTransparentTheme"
+            android:theme="@style/Theme.AppCompat.Translucent"
             >
             <meta-data
                 android:name="android.app.lib_name"
@@ -39,7 +39,10 @@
 
         <activity
             android:name=".AuthActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.FastAFMobileAuthPage"
+            >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

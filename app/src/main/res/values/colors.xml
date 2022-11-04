@@ -17,5 +17,11 @@
     <color name="white_550">#FAFAFA</color>
     <color name="grey_stroke">#CDCDCD</color>
     <color name="note_yellow">#FBE200</color>
+    <color name="blue">#0277BD</color>
+    <color name="grey">#f2f3f4</color>
+    <color name="grey2">#778899</color>
+    <color name="dark_bg">#545454</color>
+    <color name="white_100">#F8F8F8</color>
+    <color name="blue_logo">#4DBDFF</color>
 
 </resources>

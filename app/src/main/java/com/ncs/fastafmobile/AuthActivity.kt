@@ -51,8 +51,8 @@ class AuthActivity : AppCompatActivity() {
 
 
             binding.nextButton.setOnClickListener{
-                val email = binding.emailEdit.text.toString().trim()
-                val pass = binding.passwordEdit.text.toString().trim()
+                val email = binding.emailedit.text.toString().trim()
+                val pass = binding.etPassword.text.toString().trim()
 
                 if (!email.isBlank() && !pass.isBlank()){
                 binding.progressBar.visibility = View.VISIBLE
@@ -81,7 +81,7 @@ class AuthActivity : AppCompatActivity() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
-        Toast.makeText(this, currentUser?.displayName.toString(), Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, currentUser?.displayName.toString(), Toast.LENGTH_SHORT).show()
         if(currentUser != null){
             proceed()
         }

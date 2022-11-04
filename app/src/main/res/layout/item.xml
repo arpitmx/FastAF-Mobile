@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="1dp"
+    android:layout_marginBottom="1dp"
+    android:background="@color/grey">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_border"
+            android:paddingBottom="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+
+            >
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_imageview"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:elevation="0dp"
+
+                app:cardCornerRadius="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp">
+
+
+                <ImageView
+                    android:id="@+id/iv_image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:scaleType="centerCrop"
+                    android:elevation="0dp"
+                    android:src="@drawable/dropbox"/>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dropbox"
+                android:textSize="22sp"
+                android:fontFamily="@font/hb"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"
+                android:textColor="#F2F2F2"
+                android:layout_toEndOf="@+id/cv_imageview"
+                android:layout_marginLeft="20dp"/>
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/tv_name"
+                android:textColor="#DCDCDC"
+                android:fontFamily="@font/hregular"
+                android:layout_alignTop="@+id/tv_name"
+                android:layout_marginTop="35dp"
+                android:layout_toRightOf="@+id/cv_imageview"
+                android:text="abc@gmail.com"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_hidden_auth_request"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*New auth requested"
+                android:visibility="visible"
+                android:textColor="#FF6735"
+                android:textSize="18sp"
+                android:fontFamily="@font/hmed"
+                android:layout_marginBottom="10dp"
+                android:layout_alignTop="@+id/tv_email"
+                android:layout_marginTop="22dp"
+                android:layout_toRightOf="@+id/cv_imageview"
+                android:layout_alignStart="@+id/tv_email"/>
+
+
+        </RelativeLayout>
+
+</RelativeLayout>
