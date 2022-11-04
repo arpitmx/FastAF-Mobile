@@ -74,13 +74,13 @@ class FastFirebaseMessagingService : FirebaseMessagingService(){
         val remoteView = RemoteViews("com.ncs.fastafmobile",R.layout.auth_notification)
         remoteView.setTextViewText(R.id.title,title)
         remoteView.setTextViewText(R.id.body,body)
-        remoteView.setImageViewResource(R.id.logo,R.drawable.ic_baseline_fingerprint_24)
+        remoteView.setImageViewResource(R.id.logo,R.drawable.ic_baseline_lock_24)
         return remoteView
     }
 
 
     fun generateNotification(title:String, message:String){
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, MainAuthActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 
         var pendingIntent: PendingIntent? = null
@@ -93,7 +93,7 @@ class FastFirebaseMessagingService : FirebaseMessagingService(){
 
         var builder : NotificationCompat.Builder = NotificationCompat.Builder(applicationContext,
             channelID)
-            .setSmallIcon(R.drawable.ic_baseline_fingerprint_24)
+            .setSmallIcon(R.drawable.ic_baseline_lock_24)
             .setVibrate(longArrayOf(1000,1000,1000,1000))
             .setAutoCancel(false)
             .setOnlyAlertOnce(true)

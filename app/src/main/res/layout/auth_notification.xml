@@ -27,7 +27,7 @@
             android:layout_toRightOf="@id/logo"
             android:fontFamily="sans-serif-medium"
             android:text="Bitpolarity"
-            android:textSize="15dp"
+            android:textSize="12dp"
 
 
             />
