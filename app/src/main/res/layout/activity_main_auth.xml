@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:id="@+id/bottom_sheet_lin_lay"
+    android:background="#36141414"
+
+    >
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_lin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/dialog_bg"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="60dp"
+        android:weightSum="10"
+
+        >
+
+
+
+
+
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/lina"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:orientation="horizontal"
+            android:paddingEnd="10dp"
+            android:weightSum="10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bottomsheet_cancel_button"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="6dp"
+                android:layout_weight="4"
+                android:background="@null"
+                android:fontFamily="@font/hb"
+                android:gravity="center"
+                android:text="Cancel"
+                android:textAllCaps="false"
+                android:textColor="#7A7A7A"
+                android:textSize="17dp" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bottomsheet_addnote_button"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="6"
+                android:background="@drawable/note_add_button_bg"
+                android:fontFamily="@font/hb"
+                android:gravity="center"
+                android:text="Add notes"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="17dp" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <!--<ImageButton-->
+    <!--android:id="@+id/edit_note_button_bottom_sheet"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_weight="2"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:scaleX="1"-->
+    <!--android:scaleY="1"-->
+    <!--android:background="@null"-->
+    <!--android:src="@drawable/ic_baseline_edit_24"-->
+    <!--app:tint="@color/publist_yellow" />-->
+
+
+    <!--<SearchView-->
+    <!--android:id="@+id/notes_searchbar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="55dp"-->
+    <!--android:focusable="true"-->
+    <!--android:clickable="true"-->
+    <!--android:queryHint="Search notes"-->
+    <!--android:focusedByDefault="true"-->
+    <!--android:textSize="20dp"-->
+    <!--android:layout_marginStart="10dp"-->
+    <!--android:textColorHint="#D5FF3441"-->
+    <!--android:background="@drawable/search_bar_bg"-->
+
+    <!--android:layout_marginEnd="10dp"-->
+    <!--android:layout_marginTop="15dp"-->
+    <!--android:layout_marginBottom="5dp"-->
+    <!--android:fontFamily="@font/hmed"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:paddingStart="10dp"-->
+    <!--android:elevation="4dp"-->
+
+    <!--    />-->
+
+
+    <!--<androidx.appcompat.widget.LinearLayoutCompat-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical"-->
+    <!--    >-->
+
+    <!--<EditText-->
+    <!--    android:id="@+id/edit_note_bottom_sheet"-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="wrap_content"-->
+    <!--    android:layout_below="@+id/titleET"-->
+    <!--    android:layout_marginStart="20dp"-->
+    <!--    android:layout_marginEnd="20dp"-->
+    <!--    android:layout_marginBottom="10dp"-->
+    <!--    android:textColorHighlight="@color/highlight_bg"-->
+    <!--    android:background="@drawable/note_bg_two"-->
+    <!--    android:fontFamily="@font/mmedium"-->
+    <!--    android:textStyle="normal"-->
+    <!--    android:gravity="start"-->
+    <!--    android:maxHeight="350dp"-->
+    <!--    android:minHeight="300dp"-->
+    <!--    android:textColor="#303030"-->
+    <!--    android:hint="Start writing here..."-->
+    <!--    android:padding="5dp"-->
+    <!--    android:paddingStart="10dp"-->
+    <!--    android:textCursorDrawable="@null"-->
+    <!--    android:visibility="visible"-->
+    <!--    android:textSize="15dp" />-->
+
+
+    <!--</androidx.appcompat.widget.LinearLayoutCompat>-->

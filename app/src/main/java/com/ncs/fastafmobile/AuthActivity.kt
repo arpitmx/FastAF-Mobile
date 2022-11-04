@@ -2,7 +2,9 @@
 package com.ncs.fastafmobile
 
 import android.R.attr.password
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -15,8 +17,10 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.app
+import com.google.firebase.messaging.FirebaseMessaging
 import com.ncs.fastafmobile.databinding.ActivityAuthBinding
 import kotlinx.coroutines.processNextEventInCurrentThread
+import timber.log.Timber
 import kotlin.math.log
 
 
@@ -27,6 +31,13 @@ class AuthActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     val TAG = "AuthActivityXYZ"
     val db = Firebase.firestore
+    lateinit var sharedPrefs : SharedPreferences
+    lateinit var editor : SharedPreferences.Editor
+    lateinit var fcmToken : String
+
+    companion object{
+        private const val sharedPrefUser = "prefUserDetails"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +45,9 @@ class AuthActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
-
+        sharedPrefs = this.getSharedPreferences(sharedPrefUser, Context.MODE_PRIVATE)
+        editor = sharedPrefs.edit()
+        getFCMToken()
 
 
             binding.nextButton.setOnClickListener{
@@ -108,40 +121,47 @@ class AuthActivity : AppCompatActivity() {
     .addOnCompleteListener(this) { task ->
         if (task.isSuccessful) {
             // Sign in success, update UI with the signed-in user's information
-            Log.d(TAG, "signInWithEmail:success")
+            Timber.tag(TAG).d("signInWithEmail:success")
             val user = auth.currentUser
             updateUser(user!!)
 
 
         } else {
             // If sign in fails, display a message to the user.
-            Log.w(TAG, "signInWithEmail:failure", task.exception)
+            Timber.tag(TAG).w(task.exception, "signInWithEmail:failure")
             Toast.makeText(
                 baseContext, "Authentication failed.",
                 Toast.LENGTH_SHORT
             ).show()
-            binding.progressBar.visibility= View.GONE
+            binding.progressBar.visibility = View.GONE
 
         }
     }}
 
     fun updateUser(user: FirebaseUser){
 
+        editor.putString("userID",user.uid)
+        editor.apply()
+        editor.commit()
+
+
         val userDetails = hashMapOf(
                 "uid" to user.uid,
                 "email" to user.email,
-                "apps" to null
+                "apps" to null,
+                "fcmToken" to fcmToken
             )
 
         db.collection("users").document(user.uid)
             .set(userDetails)
             .addOnSuccessListener {
-                Log.d(TAG,"Details added!")
-                binding.progressBar.visibility= View.GONE
+                Timber.tag(TAG).d("Details added!")
+                binding.progressBar.visibility = View.GONE
                 proceed()
             }
-            .addOnFailureListener{ e-> Log.d(TAG,"Error writing document",e)
-                binding.progressBar.visibility= View.GONE
+            .addOnFailureListener{ e->
+                Timber.tag(TAG).d(e, "Error writing document")
+                binding.progressBar.visibility = View.GONE
                 Toast.makeText(this, "Data addition failed", Toast.LENGTH_SHORT).show()
             }
 
@@ -151,5 +171,30 @@ class AuthActivity : AppCompatActivity() {
 
     }
 
+
+
+    fun setToken(tk: String){
+        fcmToken = tk
+    }
+
+    fun getFCMToken() {
+
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+
+            if (!task.isSuccessful) {
+                Timber.tag(TAG).w(task.exception, "Fetching FCM registration token failed")
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val tk = task.result
+            setToken(tk)
+
+            // Log and toast
+            Timber.tag(TAG).d(tk)
+           // Toast.makeText(baseContext, tk, Toast.LENGTH_SHORT).show()
+        })
+
+    }
 
 }
