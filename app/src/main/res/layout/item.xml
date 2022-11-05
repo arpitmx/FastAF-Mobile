@@ -30,13 +30,17 @@
                 android:layout_marginTop="10dp">
 
 
-                <ImageView
+                <TextView
                     android:id="@+id/iv_image"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:scaleType="centerCrop"
                     android:elevation="0dp"
-                    android:src="@drawable/dropbox"/>
+                    android:fontFamily="@font/hb"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:background="@color/purple_200"
+                    android:text="AR"/>
 
 
             </androidx.cardview.widget.CardView>
@@ -82,6 +86,21 @@
                 android:layout_marginTop="22dp"
                 android:layout_toRightOf="@+id/cv_imageview"
                 android:layout_alignStart="@+id/tv_email"/>
+
+            <ImageView
+                android:id="@+id/lock"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="30dp"
+                android:elevation="0dp"
+                android:gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_lock_24"
+                app:tint="@color/grey2" />
 
 
         </RelativeLayout>

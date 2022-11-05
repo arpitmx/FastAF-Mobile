@@ -4,14 +4,13 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
 import com.ncs.fastafmobile.adapter.RecyclerAdapter
 import com.ncs.fastafmobile.databinding.ActivityMainBinding
 import io.github.g00fy2.quickie.QRResult
@@ -55,6 +54,9 @@ class MainActivity : AppCompatActivity() {
 
         askNotificationPermission()
         initRecyclerView()
+        val anim = AnimationUtils.loadAnimation(this,R.anim.rotate_fadein)
+        binding.scanBtn.animation = anim
+
 
         binding.actionbar.logout.setOnClickListener{
             FirebaseAuth
@@ -80,11 +82,15 @@ class MainActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
 
         binding.recyclerView.layoutManager = layoutManager
-        val adapter = RecyclerAdapter(arrayOf("Dropbox","Slack","Facebook","Github","Gmail","Twitter","Linkedin"),
+        val itemData = UserData(arrayOf("Dropbox","Slack","Facebook","Github","Gmail","Twitter","Linkedin"),
             arrayOf("kaygo1988@gmail.com","kaygo1988@gmail.com","kaygo1988@gmail.com","kaygo1988@gmail.com","kaygo1988@gmail.com","kaygo1988@gmail.com","kaygo1988@gmail.com"),
-            "New auth requested", arrayOf(R.drawable.dropbox,R.drawable.slack,R.drawable.facebook,R.drawable.github,R.drawable.gmail,R.drawable.twitter,R.drawable.linkdin)
+            arrayOf(1,1,1,0,0,0,0)
         )
+        val adapter = RecyclerAdapter()
+        adapter.setList(itemData)
+
         binding.recyclerView.adapter=adapter
+
     }
 
     fun handleResult(result: QRResult) {
@@ -96,8 +102,15 @@ class MainActivity : AppCompatActivity() {
                 is QRResult.QRError -> "${result.exception.javaClass.simpleName}: ${result.exception.localizedMessage}"
             }
 
-        Toast.makeText(this, response, Toast.LENGTH_SHORT).show()
 
+        if (response != "Auth canceled" && response != "Missing permission"){
+
+            val intent = Intent(this, TokenActivity::class.java)
+            intent.putExtra("token",response)
+            startActivity(intent)
+        }else{
+            Toast.makeText(this, response, Toast.LENGTH_SHORT).show()
+        }
 
 }
 }

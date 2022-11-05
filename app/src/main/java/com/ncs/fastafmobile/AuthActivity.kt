@@ -69,9 +69,12 @@ class AuthActivity : AppCompatActivity() {
         binding.changeType.setOnClickListener{
             if (signup==true){
                 binding.nextButton.text = "Login"
+                binding.changeType.text = "Not have FastAF userID?, Sign In here"
                 signup = false
             }else {
                 binding.nextButton.text = "Sign Up"
+                binding.changeType.text = "Already have FastAF userID?, Log In here"
+
                 signup = true
             }}
 
